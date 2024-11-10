@@ -1,6 +1,6 @@
 import type { Express } from "express";
-import { db } from "../db";
-import { accounts, contacts, opportunities, users } from "../db/schema";
+import { db } from "./db";
+import { accounts, contacts, opportunities, users } from "db/schema";
 import { eq } from "drizzle-orm";
 import bcrypt from "bcrypt";
 import passport from "passport";

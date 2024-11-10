@@ -11,7 +11,8 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./client/src/*"]
+      "@/*": ["./client/src/*"],
+      "db/*": ["./db/*"]
     }
   }
 }
