@@ -38,7 +38,7 @@ export default function Login() {
       <Card className="w-[400px]">
         <CardHeader>
           <CardTitle className="text-2xl">
-            <h1>{ja.auth.login}</h1>
+            {ja.auth.login}
           </CardTitle>
         </CardHeader>
         <CardContent>
