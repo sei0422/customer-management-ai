@@ -1,6 +1,6 @@
-import { StrictMode } from "react";
+import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import "./index.css";
 import { SWRConfig } from "swr";
 import { fetcher } from "./lib/fetcher";
@@ -43,7 +43,16 @@ createRoot(document.getElementById("root")!).render(
     <SWRConfig value={{ fetcher }}>
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/:rest*" component={App} />
+        <Route>
+          {() => {
+            const [location, setLocation] = useLocation();
+            useEffect(() => {
+              if (location === '/login') return;
+              fetch('/api/metrics').catch(() => setLocation('/login'));
+            }, []);
+            return <App />;
+          }}
+        </Route>
       </Switch>
     </SWRConfig>
   </StrictMode>
